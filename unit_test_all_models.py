@@ -57,14 +57,14 @@ exp_list = [
         model_style= ModelStyles.CLASSIC_FFN,
         dataset = DataSet.MNIST,
         test_name= "MNIST_CLASSIC_FFN",
-        test_acc = 0.11164,
+        test_acc = 0.10736,	#pytorch1.9: 0.11164
     ),
     dict(
         model_style= ModelStyles.FFN_TOP_K,
         dataset = DataSet.MNIST,
         test_name= "MNIST_FFN_TOP_K",
         k_approach = "GABA_SWITCH_ACT_BIN", #"FLAT_MASK", "FLAT_SUBTRACT", "LINEAR_DECAY_MASK", "LINEAR_DECAY_SUBTRACT", "GABA_SWITCH"
-        test_acc = 0.09879, 
+        test_acc = 0.09476, #pytorch1.9: 0.09879
     ),
 ]
 
@@ -115,7 +115,6 @@ for exp in exp_list:
     model_params.logger = None
 
     test_acc = train_loop(model_params, model, data_module, device)
-
     if exp['test_acc'] == test_acc: 
         print("="*10)
         print("="*10)
@@ -124,6 +123,8 @@ for exp in exp_list:
         print("="*10)
         print("="*10)
     else: 
+        print("test_acc = ", test_acc)
+        print("exp['test_acc'] = ", exp['test_acc'])
         raise Exception(exp['test_name'])
 
 
