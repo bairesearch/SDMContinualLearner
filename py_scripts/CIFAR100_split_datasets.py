@@ -28,6 +28,8 @@ def split_data(data, labels, save_name):
 
         torch.save((matched_data, matched_labels), f"{save_dir_path}/split_{save_name}_{str(i)}.pt")
 
-for save_name in ['train', 'test']:
-    loaded_data, loaded_labels = torch.load(f"../data/{cached_model_path}/all_data_{save_name}.pt")
-    split_data(loaded_data, loaded_labels, save_name)
+def split_dataset():
+    for save_name in ['train', 'test']:
+        loaded_data, loaded_labels = torch.load(f"../data/{cached_model_path}/all_data_{save_name}.pt")
+        split_data(loaded_data, loaded_labels, save_name)
+

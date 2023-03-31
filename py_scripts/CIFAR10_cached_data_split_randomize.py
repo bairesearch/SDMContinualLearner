@@ -3,8 +3,6 @@ import numpy as np
 import os
 import random
 
-cached_model_path_load= "ConvMixerEmbeddings/CIFAR10"
-
 num_data_splits =5
 
 def get_label_matches(l1,l2, d, l):
@@ -30,15 +28,20 @@ def split_data(data, labels, save_name, save_dir_path, labels_ordered):
 
         torch.save((matched_data, matched_labels), f"{save_dir_path}/split_{save_name}_{str(i)}.pt")
 
-def split_dataset():
+def split_dataset_randomize_cached():
+    split_dataset("ConvMixerEmbeddings/CIFAR10", "../data/splits/ConvMixerEmbeddings/")
+    
+def split_dataset_randomize():
+    split_dataset("CIFAR10", "../data/splits/") 
+
+def split_dataset(cached_model_path_load, save_dir_path_base):
     
     seeds = [3,15,27,97]
     for seed in seeds: 
+        save_dir_path = save_dir_path_base
         print("==="*10)
         print("Seed is:",seed)
         print("==="*10)
-
-        save_dir_path = "../data/splits/ConvMixerEmbeddings/"
 
         cached_model_path_save= f"CIFAR10_RandSeed_{seed}"
 
