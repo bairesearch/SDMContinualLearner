@@ -1,11 +1,11 @@
-torch==1.9.0
-pytorch-lightning==1.5.1
+torch
+pytorch-lightning
 torchmetrics
-torchvision==0.10.0
+torchvision
 tensorboard
 numpy
 matplotlib
-wandb==0.12.6
+wandb
 pandas
 scipy
 ipdb
