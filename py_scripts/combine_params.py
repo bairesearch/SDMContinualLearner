@@ -47,7 +47,7 @@ def get_params_net_dataloader(
     Returns model parameters for given model_style and an optional list of regularizers. 
     """
     #if load_from_checkpoint is None:
-    params = default_settings
+    params = default_settings.copy()
     params["dataset"] = dataset
     params["dataset_str"] = dataset.name
     params['model_style'] = model_style
