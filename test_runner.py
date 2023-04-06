@@ -38,12 +38,17 @@ load_path = None
 
 extras = dict(
     num_workers=0, 
-    epochs_to_train_for = 50,
-    epochs_per_dataset = 10,
-    k_min=1, 
-    num_binary_activations_for_gaba_switch = 100000,
-    #cl_baseline="MAS", # 'MAS', 'EWC-Memory', 'SI', 'L2', '
+    epochs_to_train_for = 25,
+    epochs_per_dataset = 5,
+    cl_baseline = "EWC-MEMORY",
+    #normalize_n_transform_inputs = True, 
+    ewc_memory_beta=0.005,
+    ewc_memory_importance=20000,
+    #k_min=1, 
+    #num_binary_activations_for_gaba_switch = 100000,
+    #cl_baseline="MAS", # 'MAS', 'EWC-MEMORY', 'SI', 'L2', '
     #dropout_prob = 0.1,
+    adversarial_attacks=False,
 )
 
 if load_path:
